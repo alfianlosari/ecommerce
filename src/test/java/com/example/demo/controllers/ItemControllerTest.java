@@ -7,8 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -31,7 +32,8 @@ public class ItemControllerTest {
         item1.setName("ps4");
         Item item2 = new Item();
         item2.setName("ps5");
-        when(itemRepository.findAll()).thenReturn(List.of(item1,item2));
+
+        when(itemRepository.findAll()).thenReturn(Arrays.asList(item1, item2));
 
         final ResponseEntity<List<Item>> response = itemController.getItems();
         assertNotNull(response);
@@ -86,7 +88,7 @@ public class ItemControllerTest {
         item1.setName("ps4");
         Item item2 = new Item();
         item2.setName("ps5");
-        when(itemRepository.findByName("playstation")).thenReturn(List.of(item1,item2));
+        when(itemRepository.findByName("playstation")).thenReturn(Arrays.asList(item1, item2));
 
         final ResponseEntity<List<Item>> response = itemController.getItemsByName("playstation");
         assertNotNull(response);

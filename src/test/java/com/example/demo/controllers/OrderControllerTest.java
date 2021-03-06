@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,7 +91,7 @@ public class OrderControllerTest {
         userOrder2.setId(2L);
         userOrder2.setTotal(BigDecimal.valueOf(1000));
 
-        when(orderRepo.findByUser(existingUser)).thenReturn(List.of(userOrder1, userOrder2));
+        when(orderRepo.findByUser(existingUser)).thenReturn(Arrays.asList(userOrder1, userOrder2));
 
         final ResponseEntity<List<UserOrder>> response = orderController.getOrdersForUser("alfianlosari");
 
