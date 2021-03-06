@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <Appender name="splunkAppender" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+        <url>http://localhost:8088</url>
+        <token>9f47d957-c20e-4f36-a91a-dd2808955555</token>
+        <disableCertificateValidation>true</disableCertificateValidation>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%msg</pattern>
+        </layout>
+    </Appender>
+    <logger name ="com.example.demo" level="debug">
+        <appender-ref ref="splunkAppender" />
+    </logger>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+</configuration>
